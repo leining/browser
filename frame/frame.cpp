@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "frame.h"
+#include "mainframe.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -34,8 +35,14 @@ CframeApp theApp;
 
 BOOL CframeApp::InitInstance()
 {
-
 	CWinApp::InitInstance();
+	CMainFrame * mainframe = new CMainFrame();
+	m_pMainWnd = mainframe;
+	mainframe->CreateEx(0, _T("MAINFRAME"), _T("ninglei_w"),
+		WS_POPUPWINDOW | WS_MAXIMIZEBOX | WS_MINIMIZEBOX | WS_THICKFRAME,
+		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, NULL, NULL);
+	mainframe->ShowWindow(SW_SHOW);
+	mainframe->UpdateWindow();
 	return TRUE;
 }
 
